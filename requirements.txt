@@ -1,0 +1,4 @@
+wgpu
+rendercanvas
+glfw
+numpy
