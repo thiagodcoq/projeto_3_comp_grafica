@@ -45,3 +45,10 @@ def rotate_y(a):
 
 def normal_matrix(model):
     return np.linalg.inv(model).T.astype(np.float32)
+
+
+def shadow_matrix(light, plane):
+    """Projeta pontos sobre o plano (a, b, c, d) a partir de uma luz pontual: S = (p.l) I - l p^T."""
+    l = np.array([*light, 1.0], dtype=np.float32)
+    p = np.asarray(plane, dtype=np.float32)
+    return (np.dot(p, l) * np.eye(4) - np.outer(l, p)).astype(np.float32)
